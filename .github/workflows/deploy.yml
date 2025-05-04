@@ -3,7 +3,7 @@ name: Deploy .NET Core App with Docker to Azure VM
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   deploy:
@@ -23,7 +23,7 @@ jobs:
         ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'EOF'
           # Si no existe la carpeta, clona el repo
           if [ ! -d "pedidos-service" ]; then
-            git clone https://github.com/DevJerm/Microservicio-pedidos.git pedidos-service
+            git clone https://github.com/DevJerm/gestion-pedidos.git pedidos-service
           fi
           cd pedidos-service
           git pull origin main
